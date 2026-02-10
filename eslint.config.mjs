@@ -13,6 +13,13 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  // Disable CSS linting warnings for Tailwind directives
+  {
+    files: ["**/*.css"],
+    rules: {
+      "no-unknown-atrules": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;
