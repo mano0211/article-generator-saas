@@ -37,6 +37,7 @@ Unlike simple wrapper applications, this project implements a full-stack archite
 ## 🏗️ System Architecture
 
 The application follows a modern **Monolithic Containerized Architecture**, designed for simplicity and ease of deployment while maintaining separation of concerns.
+
 ```mermaid
 graph TD
     %% Nodes
@@ -69,14 +70,18 @@ graph TD
     subgraph Deployment [AWS Cloud Environment]
         AWS --> Docker
         Docker --> Server
-    end
+ end
+ ```
 
-### 🔧 Technical Workflow
+🔧 Technical Workflow
+1.Frontend (Client): Built with Next.js 15 App Router. It uses useStream patterns to handle incoming data chunks from the AI, providing a "typing" effect that improves UX.
 
-1.  **Frontend (Client):** Built with **Next.js 15 App Router**. It uses `useStream` patterns to handle incoming data chunks from the AI, providing a "typing" effect that improves UX.
-2.  **Backend (Server Actions):** Instead of a separate API server, I used Next.js Server Actions to keep the backend logic close to the UI. This ensures type safety and reduces network latency.
-3.  **Database & Auth:** User sessions and data are managed by **Supabase**. Row Level Security (RLS) policies are enforced to ensure users can only access their own history.
-4.  **AI Integration:** The app connects to **Google Gemini** via a streaming interface. This required handling `ReadableStreams` in Node.js to pass data through to the client without buffering the entire response.
-5.  **DevOps:** The app is packaged into a **Docker** container. Updates are pushed to the **GitHub Container Registry (GHCR)**, and the **AWS EC2** instance pulls the latest image via a custom deployment script.
+2.Backend (Server Actions): Instead of a separate API server, I used Next.js Server Actions to keep the backend logic close to the UI. This ensures type safety and reduces network latency.
+
+3.Database & Auth: User sessions and data are managed by Supabase. Row Level Security (RLS) policies are enforced to ensure users can only access their own history.
+
+4.AI Integration: The app connects to Google Gemini via a streaming interface. This required handling ReadableStreams in Node.js to pass data through to the client without buffering the entire response.
+
+5.DevOps: The app is packaged into a Docker container. Updates are pushed to the GitHub Container Registry (GHCR), and the AWS EC2 instance pulls the latest image via a custom deployment script.
 
 Built by Mano Balaji Cheepurupalli
