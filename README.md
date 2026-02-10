@@ -37,11 +37,6 @@ Unlike simple wrapper applications, this project implements a full-stack archite
 ## 🏗️ System Architecture
 
 The application follows a modern **Monolithic Containerized Architecture**, designed for simplicity and ease of deployment while maintaining separation of concerns.
-
-## 🏗️ System Architecture
-
-The application follows a modern **Monolithic Containerized Architecture**, designed for simplicity and ease of deployment while maintaining separation of concerns.
-
 ```mermaid
 graph TD
     %% Nodes
